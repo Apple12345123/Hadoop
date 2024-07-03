@@ -1,0 +1,5 @@
+package com.hadoop1.hospitalDate;
+
+public class MySQLDBOutputMapper {
+
+}

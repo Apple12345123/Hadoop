@@ -1,0 +1,30 @@
+package com.hadoop1.mysql;
+
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
+
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.io.Writable;
+
+public class Covid19MaxDateWritable implements Writable {
+	
+	private Text Date;
+	private IntWritable new_cases;
+	
+	// alt + s, v
+	// override method
+	@Override
+	public void readFields(DataInput in) throws IOException {
+		this.Date.readFields(in);
+		this.new_cases.readFields(in);
+	}
+
+	@Override
+	public void write(DataOutput out) throws IOException {
+		this.Date.write(out);
+		this.new_cases.write(out);
+	}
+
+}

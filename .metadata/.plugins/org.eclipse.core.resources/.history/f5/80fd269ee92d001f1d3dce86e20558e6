@@ -1,0 +1,23 @@
+package com.hadoop1.mysql;
+
+import java.io.IOException;
+
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Reducer;
+
+public class Covid19WithMySQLReducer extends Reducer<Text, Covid19MaxDateWritable, Text, Text> {
+
+	public void reduce(Text _key, Iterable<Covid19MaxDateWritable> values, Context context) throws IOException, InterruptedException {
+		
+		int max = Integer.MIN_VALUE;
+		
+		// process values
+		for (Covid19MaxDateWritable val : values) {
+
+			if(max < val.getNew_cases().get()) {
+				// new_cases max date
+			}
+		}
+	}
+
+}

@@ -1,0 +1,17 @@
+package com.hadoop1.covid19;
+
+import java.io.IOException;
+
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Reducer;
+
+public class Covid19Reducer extends Reducer<Text, IntWritable, Text, IntWritable> {
+
+	public void reduce(Text _key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
+		// process values
+		for (Text val : values) {
+
+		}
+	}
+
+}

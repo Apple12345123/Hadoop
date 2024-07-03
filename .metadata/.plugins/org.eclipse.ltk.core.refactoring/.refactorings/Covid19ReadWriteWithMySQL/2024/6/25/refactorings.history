@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.hadoop1.mysql.Covid19EntityRecoder&apos; to &apos;Covid19EntityRecorder&apos;&#x0A;- Original project: &apos;Covid19ReadWriteWithMySQL&apos;&#x0A;- Original element: &apos;com.hadoop1.mysql.Covid19EntityRecoder&apos;&#x0A;- Renamed element: &apos;com.hadoop1.mysql.Covid19EntityRecorder&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Covid19EntityRecoder&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src=/optional=/true=/=/maven.pomderived=/true=/&lt;com.hadoop1.mysql{Covid19EntityRecoder.java[Covid19EntityRecoder" matchStrategy="1" name="Covid19EntityRecorder" qualified="false" references="true" similarDeclarations="false" stamp="1718759286602" textual="false" version="1.0"/>
+</session>

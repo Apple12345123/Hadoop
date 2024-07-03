@@ -1,0 +1,5 @@
+package com.hadoop1.mysql;
+
+public class Covid19MaxDateEntityRecorder {
+
+}

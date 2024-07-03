@@ -1,0 +1,25 @@
+package com.hadoop1.sql;
+
+import java.io.IOException;
+
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.NullWritable;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Mapper.Context;
+
+public class HospitalWithMySQLMapper extends Mapper<LongWritable, HospitalEntityRecorder, HospitalEntityRecorder, NullWritable> {
+	
+	NullWritable n = NullWritable.get();
+
+	public void map(LongWritable ikey, HospitalEntityRecorder ivalue, Context context) throws IOException, InterruptedException {
+		String hospital_id = ivalue.getHospital_id();
+		String hospital_name = ivalue.getHospital_name();
+		String hospital_loc_code = ivalue.getHospital_loc_code();
+	    String hospital_location = ivalue.getHospital_location(); 
+	    String hospital_website = ivalue.getHospital_website();
+	    String hospital_call = ivalue.getHospital_call();
+		
+		
+		context.write(ivalue, n);
+	}
+}

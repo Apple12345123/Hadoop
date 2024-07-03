@@ -1,0 +1,12 @@
+package com.hadoop1.hospitalDate;
+
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+
+
+public class MySQLDBOutputMapper extends Mapper<LongWritable, Text, Text, Text> {
+	
+	
+
+}

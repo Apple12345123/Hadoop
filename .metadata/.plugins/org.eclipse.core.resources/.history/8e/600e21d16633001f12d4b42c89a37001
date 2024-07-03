@@ -1,0 +1,5 @@
+package com.hadoop1.sql;
+
+public class HospitalWithMySQLReducer {
+
+}

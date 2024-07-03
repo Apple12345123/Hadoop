@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;HospitalEntityRecorder.java&apos; to &apos;HospitalWithDBInput/src/com.hadoop1.sql&apos;&#x0A;- Original project: &apos;HospitalWithDBOutputFormat&apos;&#x0A;- Destination element: &apos;HospitalWithDBInput/src/com.hadoop1.sql&apos;&#x0A;- Original element: &apos;com.hadoop1.hospital.HospitalEntityRecorder.java&apos;" description="Copy compilation unit" destination="=HospitalWithDBInput/src&lt;com.hadoop1.sql" element1="/src=/optional=/true=/=/maven.pomderived=/true=/&lt;com.hadoop1.hospital{HospitalEntityRecorder.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1718855015318" units="1" version="1.0"/>
+</session>

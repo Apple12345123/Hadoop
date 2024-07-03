@@ -1,0 +1,59 @@
+package com.hadoop1.mysql;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.conf.Configured;
+import org.apache.hadoop.mapred.lib.db.DBInputFormat;
+import org.apache.hadoop.mapred.lib.db.DBOutputFormat;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.lib.db.DBConfiguration;
+import org.apache.hadoop.util.Tool;
+import org.apache.hadoop.util.ToolRunner;
+
+public class Covid19WithMySQLDriver extends Configured implements Tool{
+
+	final String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
+	final String DB_URL = "jdbc:mysql://10.100.203.58:3306/hadoop_test";
+	final String DB_USER = "hadoop_test";
+	final String DB_PASS = "12345";
+	
+	public static void main(String[] args) throws Exception {
+		int exitCode = ToolRunner.run(new Covid19WithMySQLDriver(), args);
+		// syso   ctrl + space
+		System.out.println(exitCode);
+		}
+
+	@Override
+	public int run(String[] arg0) throws Exception {
+		
+		Configuration conf = getConf();
+		
+		Job job = Job.getInstance(conf, "Read Write MySQL");
+		
+		// main class regist
+		job.setJarByClass(getClass());
+		// mapper class regist
+		job.setMapperClass(Covid19WithMySQLMapper.class);
+		// reducer class regist
+		
+		// mapper => reducer key, value type regist
+		
+		// regist : input, output format
+		
+		job.setInputFormatClass(DBInputFormat.class);
+		job.setOutputFormatClass(DBOutputFormat.class);
+		
+		// database connection config
+		DBConfiguration.configureDB(job.getConfiguration(), DB_DRIVER, DB_URL, DB_USER, DB_PASS);
+		
+		// Input DB setting
+		DBInputFormat.setInput(
+				job,
+				Covid19EntityRecorder.class,
+				"SELECT * FROM covid19 ORDER BY iso_code",	// search query
+				"SELECT count(*) FROM covid19"				// row count
+		);
+		
+		return 0;
+	}
+
+}

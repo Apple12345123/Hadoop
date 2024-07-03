@@ -1,0 +1,33 @@
+package com.hadoop1.covid19;
+
+import java.io.IOException;
+
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+
+public class MySQLDBOutputMapper extends Mapper<LongWritable, Text, Text, Text> {
+
+	public void map(LongWritable ikey, Text ivalue, Context context) throws IOException, InterruptedException {
+
+		if(ikey.get() != 0) {
+			String[] strs = ivalue.toString().split(",");
+			Covid19EntityRecoder writable = new Covid19EntityRecoder(
+				strs[0],
+				strs[1],
+				strs[2],
+				strs[3],
+				strs[4],
+				strs[5],
+				strs[6],
+				strs[7],
+				strs[8],
+				strs[9],
+				strs[10],
+				strs[11]
+				
+			);
+		}
+	} // end map
+
+} // end mapper class

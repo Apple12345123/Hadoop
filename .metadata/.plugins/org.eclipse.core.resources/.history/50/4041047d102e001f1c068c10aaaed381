@@ -1,0 +1,47 @@
+package com.hadoop1.hospital;
+
+public class MySQLDBOutputDriver extends Configured implements Tool{
+
+	@Override
+	public int run(String[] args) throws Exception {
+			Configuration conf = getConf();
+			Job job = Job.getInstance(conf, "MySQL Writer");
+			
+			job.setJarByClass(MySQLDBOutputDriver.class);
+			job.setMapperClass(MySQLDBOutputMapper.class);
+			
+			job.setOutputKeyClass(HospitalEntityRecorder.class);
+			job.setOutputValueClass(NullWritable.class);
+			
+			// import org.apache.hadoop.mapreduce.lib.db.DBOutputFormat;
+			job.setOutputFormatClass(DBOutputFormat.class);
+			job.setNumReduceTasks(0);	// reduce task create 0, Mapper only job
+			
+			// import org.apache.hadoop.mapreduce.lib.db.DBConfiguration;
+			DBConfiguration.configureDB(
+					job.getConfiguration(),
+					"com.mysql.cj.jdbc.Driver",						// JDBC Driver
+					"jdbc:mysql://10.100.203.58:3306/mentalCare",	// connect db url
+					"hadoop_test",									// username
+					"mental"										// password
+			);
+			
+			DBOutputFormat.setOutput(			// make INSERT query
+					job,
+					"HospitalDate",
+					"hospital_location",					// output table name 
+					"hospital_name");
+			
+			FileInputFormat.addInputPath(job, new Path(args[0]));	// set input file path
+			int exitCode = job.waitForCompletion(true) ? 0:1;
+			
+			return exitCode;
+		}
+		public static void main(String[] args) throws Exception {
+			// import org.apache.hadoop.conf.Configuration;
+			int result = ToolRunner.run(new Configuration(), new MySQLDBOutputDriver(), args);
+			System.out.println(result);
+			System.exit(result);
+		}
+		
+	}

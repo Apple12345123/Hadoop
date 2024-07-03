@@ -1,0 +1,59 @@
+package com.hadoop1.sql;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.apache.hadoop.mapreduce.lib.db.DBWritable;
+
+public class HospitalEntityRecorder implements DBWritable{
+	private String hospital_id;
+	private String hospital_name;
+    private String hospital_location;
+    private String hospital_website;
+    private String hospital_call;
+    
+    public HospitalEntityRecorder() {}
+    
+	public HospitalEntityRecorder(String hospital_id, String hospital_name, String hospital_location, String hospital_website, String hospital_call) {
+		super();
+		this.hospital_id = hospital_id;
+		this.hospital_location = hospital_name;
+		this.hospital_name = hospital_location;
+		this.hospital_website = hospital_website;
+		this.hospital_call = hospital_call;
+	}
+
+
+	@Override
+	public void readFields(ResultSet rs) throws SQLException {
+		hospital_id = rs.getString(1);
+		hospital_name = rs.getString(2);
+		hospital_location = rs.getString(3);
+		hospital_website = rs.getString(4);
+		hospital_call = rs.getString(5);
+	}
+
+	@Override
+	public void write(PreparedStatement pstmt) throws SQLException {
+		pstmt.setString(1, hospital_id);
+		pstmt.setString(2, this.hospital_name);
+		pstmt.setString(3, hospital_location);
+		pstmt.setString(4, hospital_website);
+		pstmt.setString(5, hospital_call);
+	}
+
+
+	@Override
+	public String toString() {
+		return 
+				hospital_id + ","
+				+ hospital_name + ","
+				+ hospital_location + ","
+				+ hospital_website + ","
+				+ hospital_call;
+	}
+	
+	
+
+}

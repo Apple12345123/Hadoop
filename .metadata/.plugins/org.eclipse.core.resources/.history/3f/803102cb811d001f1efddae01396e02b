@@ -1,0 +1,10 @@
+package com.hadoop1.mysql;
+
+public class MySQLConnectionExample {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

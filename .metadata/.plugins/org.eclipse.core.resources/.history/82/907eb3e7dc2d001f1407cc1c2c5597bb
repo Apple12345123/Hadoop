@@ -1,0 +1,7 @@
+package com.hadoop1.mysql;
+
+import org.apache.hadoop.io.Writable;
+
+public class Covid19MaxDateWritable implements Writable {
+
+}

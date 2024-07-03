@@ -1,0 +1,11 @@
+package com.hadoop1.sql;
+
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.NullWritable;
+import org.apache.hadoop.io.Text;
+
+public class HospitalWithMySQLReducer extends Reducer<LongWritable, Text, HospitalEntityRecorder, NullWritable>{
+	
+	NullWritable n = NullWritable.get();
+
+}
